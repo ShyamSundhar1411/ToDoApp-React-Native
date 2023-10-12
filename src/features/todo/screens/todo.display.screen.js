@@ -6,15 +6,12 @@ import {
   SafeAreaView,
   Text,
 } from "react-native";
-import { ThemeProvider } from "styled-components/native";
-import { theme } from "./src/infrastructure/theme";
+
 export const ToDoDisplayScreen = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <SafeAreaView style={styles.androidSafeArea}>
-        <Text>Good Morning Shyam</Text>
-      </SafeAreaView>
-    </ThemeProvider>
+    <SafeAreaView style={styles.androidSafeArea}>
+      <Text>Good Morning Shyam</Text>
+    </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
