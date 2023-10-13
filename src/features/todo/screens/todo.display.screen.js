@@ -1,18 +1,11 @@
 import React from "react";
-import {
-  StyleSheet,
-  StatusBar,
-  Platform,
-  SafeAreaView,
-  Text,
-} from "react-native";
+import { StyleSheet, StatusBar, Platform, SafeAreaView } from "react-native";
 import styled from "styled-components/native";
 import { SearchBarComponent } from "../components/Search";
-const GreetingText = styled.Text`
-  font-size: ${(props) => props.theme.fontSizes.h3};
-  padding: ${(props) => props.theme.space[3]};
-  margin-top: ${(props) => props.theme.space[5]};
-`;
+import { CarouselComponent } from "../components/CarouselComponent";
+import { GreetingComponent } from "../components/GreetingComponent";
+import { ENTRIES1 } from "../../../data/sampleData";
+
 const SearchBoxContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;
@@ -20,9 +13,10 @@ export const ToDoDisplayScreen = () => {
   return (
     <>
       <SafeAreaView style={styles.androidSafeArea}>
-        <GreetingText>Good Morning Shyam</GreetingText>
+        <GreetingComponent userName="Shyam" />
         <SearchBoxContainer>
           <SearchBarComponent />
+          <CarouselComponent data={ENTRIES1} />
         </SearchBoxContainer>
       </SafeAreaView>
     </>
