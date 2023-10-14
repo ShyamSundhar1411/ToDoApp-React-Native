@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components/native";
 import { View } from "react-native";
-const GreetingText = styled.Text`
-  font-size: ${(props) => props.theme.fontSizes.h3};
-  padding: ${(props) => props.theme.space[3]};
-  margin-top: ${(props) => props.theme.space[5]};
-`;
+import { GreetingText } from "../../../components/styles/styles";
+
 export const GreetingComponent = ({ userName }) => {
   const [greeting, setGreeting] = useState("Hello !");
   useEffect(() => {

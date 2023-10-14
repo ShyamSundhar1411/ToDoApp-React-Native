@@ -1,4 +1,4 @@
-export const ENTRIES1 = [
+export const sampleImages = [
   {
     title: "Beautiful and dramatic Antelope Canyon",
     subtitle: "Lorem ipsum dolor sit amet et nuncat mergitur",

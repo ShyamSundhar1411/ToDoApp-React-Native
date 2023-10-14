@@ -1,14 +1,19 @@
 import React from "react";
-import { StyleSheet, StatusBar, Platform, SafeAreaView } from "react-native";
-import styled from "styled-components/native";
-import { SearchBarComponent } from "../components/Search";
+import {
+  StyleSheet,
+  StatusBar,
+  Platform,
+  SafeAreaView,
+  FlatList,
+} from "react-native";
+import { SearchBarComponent } from "../components/SearchComponent";
 import { CarouselComponent } from "../components/CarouselComponent";
 import { GreetingComponent } from "../components/GreetingComponent";
-import { ENTRIES1 } from "../../../data/sampleData";
+import { sampleImages } from "../../../data/sampleData";
+import { todoItems } from "../../../data/sampleTodo";
+import { ToDoTileComponent } from "../components/ToDoTileComponent";
+import { SearchBoxContainer } from "../../../components/styles/styles";
 
-const SearchBoxContainer = styled.View`
-  padding: ${(props) => props.theme.space[3]};
-`;
 export const ToDoDisplayScreen = () => {
   return (
     <>
@@ -16,8 +21,15 @@ export const ToDoDisplayScreen = () => {
         <GreetingComponent userName="Shyam" />
         <SearchBoxContainer>
           <SearchBarComponent />
-          <CarouselComponent data={ENTRIES1} />
         </SearchBoxContainer>
+        <CarouselComponent data={sampleImages} />
+        <FlatList
+          data={todoItems}
+          renderItem={({ item }) => {
+            return <ToDoTileComponent todo={item} />;
+          }}
+          keyExtractor={(item) => item.id}
+        />
       </SafeAreaView>
     </>
   );

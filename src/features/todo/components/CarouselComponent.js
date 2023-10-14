@@ -1,19 +1,11 @@
 import React from "react";
 import { Dimensions, Image } from "react-native";
-import styled from "styled-components/native";
 import Carousel from "react-native-reanimated-carousel";
+import {
+  CarouselView,
+  CarouselItemView,
+} from "../../../components/styles/styles";
 
-const CarouselItemView = styled.View`
-  flex: 1;
-  justify-content: center;
-  border: 1px;
-  border-radius: 20px;
-  overflow: hidden;
-`;
-
-const CarouselView = styled.View`
-  margin-top: ${(props) => props.theme.space[3]};
-`;
 export const CarouselComponent = ({ data }) => {
   const width = Dimensions.get("window").width;
   const height = width / 2;
