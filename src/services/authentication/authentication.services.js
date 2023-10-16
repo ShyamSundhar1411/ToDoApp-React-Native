@@ -9,6 +9,7 @@ import {
 export const AuthenticationContext = createContext();
 export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
@@ -17,6 +18,7 @@ export const AuthenticationContextProvider = ({ children }) => {
     loginRequest(email, password)
       .then((u) => {
         setUser(u);
+        setIsAuthenticated(true);
         setIsLoading(false);
       })
       .catch((e) => {
@@ -34,6 +36,7 @@ export const AuthenticationContextProvider = ({ children }) => {
     signUpRequest(email, password)
       .then((u) => {
         setUser(u);
+        setIsAuthenticated(true);
         setIsLoading(false);
       })
       .catch((e) => {
@@ -45,12 +48,14 @@ export const AuthenticationContextProvider = ({ children }) => {
   const onLogout = () => {
     logoutRequest().then(() => {
       setUser(null);
+      setIsAuthenticated(false);
       setError(null);
     });
   };
   return (
     <AuthenticationContext.Provider
       value={{
+        isAuthenticated,
         user,
         isLoading,
         error,

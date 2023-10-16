@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { StyleSheet } from "react-native";
 
 export const TileView = styled.View`
   background-color: #ffffff;
@@ -29,3 +30,23 @@ export const GreetingText = styled.Text`
 export const SearchBoxContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;
+export const ButtonContainer = styled.View`
+  background-color: rgba(123, 104, 238, 0.8);
+  align-items: center;
+  justify-content: center;
+  height: 55px;
+  width: 400px;
+  border-radius: 35px;
+  margin-horizontal: 20px;
+  margin-vertical: 10px;
+  border-width: 1px;
+  border-color: white;
+`;
+export const customStyleSheet = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "flex-end",
+  },
+});

@@ -3,6 +3,7 @@ import * as firebase from "firebase/app";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
 import { ToDoDisplayScreen } from "./src/features/todo/screens/todo.display.screen";
+import { Navigation } from "./src/infrastructure/navigation/index";
 import { theme } from "./src/infrastructure/theme";
 import {
   FIREBASE_API_KEY,
@@ -31,7 +32,7 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <AuthenticationContextProvider>
-          <ToDoDisplayScreen />
+          <Navigation />
           <ExpoStatusBar style="auto" />
         </AuthenticationContextProvider>
       </ThemeProvider>
