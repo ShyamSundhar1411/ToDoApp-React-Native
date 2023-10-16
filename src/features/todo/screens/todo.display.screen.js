@@ -16,22 +16,20 @@ import { SearchBoxContainer } from "../../../components/styles/styles";
 
 export const ToDoDisplayScreen = () => {
   return (
-    <>
-      <SafeAreaView style={styles.androidSafeArea}>
-        <GreetingComponent userName="Shyam" />
-        <SearchBoxContainer>
-          <SearchBarComponent />
-        </SearchBoxContainer>
-        <CarouselComponent data={sampleImages} />
-        <FlatList
-          data={todoItems}
-          renderItem={({ item }) => {
-            return <ToDoTileComponent todo={item} />;
-          }}
-          keyExtractor={(item) => item.id}
-        />
-      </SafeAreaView>
-    </>
+    <SafeAreaView style={styles.androidSafeArea}>
+      <GreetingComponent userName="Shyam" />
+      <SearchBoxContainer>
+        <SearchBarComponent />
+      </SearchBoxContainer>
+      <CarouselComponent data={sampleImages} />
+      <FlatList
+        data={todoItems}
+        renderItem={({ item }) => {
+          return <ToDoTileComponent todo={item} />;
+        }}
+        keyExtractor={(item) => item.id}
+      />
+    </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({

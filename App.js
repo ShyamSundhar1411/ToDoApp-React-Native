@@ -1,5 +1,5 @@
 import React from "react";
-import * as firebase from "firebase";
+import * as firebase from "firebase/app";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
 import { ToDoDisplayScreen } from "./src/features/todo/screens/todo.display.screen";
@@ -12,7 +12,7 @@ import {
   FIREBASE_MESSAGING_SENDER_ID,
   FIREBASE_APP_ID,
   FIREBASE_MEASURE_ID,
-} from "react-native-dotenv";
+} from "./config.js";
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.services";
 const firebaseConfig = {
   apiKey: FIREBASE_API_KEY,
@@ -24,9 +24,8 @@ const firebaseConfig = {
   measurementId: FIREBASE_MEASURE_ID,
 };
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
+const FIREBASE_APP = firebase.initializeApp(firebaseConfig);
+
 export default function App() {
   return (
     <>
