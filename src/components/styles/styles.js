@@ -1,5 +1,7 @@
 import styled from "styled-components/native";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions, Animated } from "react-native";
+
+const { width, height } = Dimensions.get("window");
 
 export const TileView = styled.View`
   background-color: #ffffff;
@@ -42,29 +44,3 @@ export const ButtonContainer = styled.Pressable`
   border-width: 3px;
   border-color: white;
 `;
-
-export const ButtonText = styled.Text`
-  font-size: ${(props) => props.theme.fontSizes.title};
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  color: white;
-  letter-spacing: 0.5px;
-`;
-export const customStyleSheet = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "flex-end",
-  },
-  button: {
-    backgroundColor: "rgba(123, 104, 238, 0.8)",
-    alignItems: "center",
-    justifyContent: "center",
-    height: 55,
-    width: 400,
-    borderRadius: 35,
-    marginHorizontal: 20,
-    marginVertical: 10,
-    borderWidth: 2,
-    borderColor: "white",
-  },
-});
