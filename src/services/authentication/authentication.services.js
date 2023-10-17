@@ -1,5 +1,4 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
-import * as firebase from "firebase/app";
 import {
   loginRequest,
   signUpRequest,
@@ -13,11 +12,11 @@ export const AuthenticationContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
-  const onLogin = (email, password) => {
+  const onLogin = async (email, password) => {
     setIsLoading(true);
-    loginRequest(email, password)
+    await loginRequest(email, password)
       .then((u) => {
-        setUser(u);
+        setUser(u.user);
         setIsAuthenticated(true);
         setIsLoading(false);
       })
@@ -27,15 +26,15 @@ export const AuthenticationContextProvider = ({ children }) => {
       });
   };
 
-  const onRegister = (email, password, repeatPassword) => {
+  const onRegister = async (email, password, repeatPassword) => {
     setIsLoading(true);
     if (password !== repeatPassword) {
       setError("Error: Passwords do not match");
       return;
     }
-    signUpRequest(email, password)
+    await signUpRequest(email, password)
       .then((u) => {
-        setUser(u);
+        setUser(u.user);
         setIsAuthenticated(true);
         setIsLoading(false);
       })
@@ -45,8 +44,8 @@ export const AuthenticationContextProvider = ({ children }) => {
       });
   };
 
-  const onLogout = () => {
-    logoutRequest().then(() => {
+  const onLogout = async () => {
+    await logoutRequest().then(() => {
       setUser(null);
       setIsAuthenticated(false);
       setError(null);

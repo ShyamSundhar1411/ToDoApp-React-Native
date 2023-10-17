@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   StyleSheet,
   StatusBar,
@@ -13,11 +13,13 @@ import { sampleImages } from "../../../data/sampleData";
 import { todoItems } from "../../../data/sampleTodo";
 import { ToDoTileComponent } from "../components/ToDoTileComponent";
 import { SearchBoxContainer } from "../../../components/styles/styles";
+import { AuthenticationContext } from "../../../services/authentication/authentication.services";
 
 export const ToDoDisplayScreen = () => {
+  const { user } = useContext(AuthenticationContext);
   return (
     <SafeAreaView style={styles.androidSafeArea}>
-      <GreetingComponent userName="Shyam" />
+      <GreetingComponent userName={user.email} />
       <SearchBoxContainer>
         <SearchBarComponent />
       </SearchBoxContainer>

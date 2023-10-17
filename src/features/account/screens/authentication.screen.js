@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Dimensions, View, StyleSheet, Pressable, Text } from "react-native";
+import {
+  Dimensions,
+  View,
+  StyleSheet,
+  Pressable,
+  Text,
+  Keyboard,
+} from "react-native";
 import {
   ButtonText,
   customStyleSheet,
@@ -22,7 +29,7 @@ export const AuthenticationScreen = () => {
     const interpolation = interpolate(
       imagePosition.value,
       [0, 1],
-      [-height / 2, 0],
+      [-height + 100, 0],
     );
     return {
       transform: [
@@ -90,7 +97,9 @@ export const AuthenticationScreen = () => {
             closeButtonAnimatedStyle,
           ]}
         >
-          <Text onPress={() => (imagePosition.value = 1)}>X</Text>
+          <Text onPress={() => (Keyboard.dismiss(), (imagePosition.value = 1))}>
+            X
+          </Text>
         </Animated.View>
       </Animated.View>
       <View style={customStyleSheet.bottomContainer}>

@@ -44,3 +44,12 @@ export const ButtonContainer = styled.Pressable`
   border-width: 3px;
   border-color: white;
 `;
+
+export const SnackBarContainer = styled.View`
+  flex: 1;
+  justify-content: space-between;
+`;
+
+export const SnackBarText = styled.Text`
+  color: white;
+`;
