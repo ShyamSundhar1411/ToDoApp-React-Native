@@ -6,7 +6,7 @@ export const SearchBarComponent = () => {
   return (
     <Searchbar
       value={searchKeyword}
-      placehodler="Search"
+      placeholder="Search"
       onChangeText={(text) => {
         setSearchKeyword(text);
       }}

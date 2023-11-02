@@ -8,7 +8,7 @@ export const ToDoTileComponent = ({ todo }) => {
       <Text>{todo.title}</Text>
       <Text>{todo.task}</Text>
       <Text>Is Important: {todo.isImportant ? "Yes" : "No"}</Text>
-      <Text>Created At: {todo.created_at}</Text>
+      <Text>Created At: {todo.createdAt.toDate().toString()}</Text>
       <Text>Completed: {todo.completed ? "Yes" : "No"}</Text>
     </TileView>
   );

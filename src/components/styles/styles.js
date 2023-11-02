@@ -53,3 +53,8 @@ export const SnackBarContainer = styled.View`
 export const SnackBarText = styled.Text`
   color: white;
 `;
+export const LoaderView = styled.View`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+`;

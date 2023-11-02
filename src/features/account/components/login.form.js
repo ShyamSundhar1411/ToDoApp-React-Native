@@ -6,7 +6,7 @@ import {
 } from "../components/styles/account.styles";
 import { Pressable, View, KeyboardAvoidingView, Keyboard } from "react-native";
 import { Spacer } from "../../../components/Spacer";
-import { AuthenticationContext } from "../../../services/authentication/authentication.services";
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import { MySnackBarComponent } from "../../../components/SnackBar";
 export const LoginFormComponent = () => {
   const [email, setEmail] = useState("");

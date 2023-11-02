@@ -10,27 +10,36 @@ import { SearchBarComponent } from "../components/SearchComponent";
 import { CarouselComponent } from "../components/CarouselComponent";
 import { GreetingComponent } from "../components/GreetingComponent";
 import { sampleImages } from "../../../data/sampleData";
-import { todoItems } from "../../../data/sampleTodo";
 import { ToDoTileComponent } from "../components/ToDoTileComponent";
 import { SearchBoxContainer } from "../../../components/styles/styles";
-import { AuthenticationContext } from "../../../services/authentication/authentication.services";
-
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import { TodoContext } from "../../../services/todo/todo.context";
+import { Loader } from "../../../components/Loader";
+import { Spacer } from "../../../components/Spacer";
 export const ToDoDisplayScreen = () => {
   const { user } = useContext(AuthenticationContext);
+  const { todos, isLoading, error } = useContext(TodoContext);
   return (
     <SafeAreaView style={styles.androidSafeArea}>
-      <GreetingComponent userName={user.email} />
-      <SearchBoxContainer>
-        <SearchBarComponent />
-      </SearchBoxContainer>
-      <CarouselComponent data={sampleImages} />
-      <FlatList
-        data={todoItems}
-        renderItem={({ item }) => {
-          return <ToDoTileComponent todo={item} />;
-        }}
-        keyExtractor={(item) => item.id}
-      />
+      {isLoading ? (
+        <Loader isLoading={isLoading} />
+      ) : (
+        <>
+          <GreetingComponent userName={user.email} />
+          <SearchBoxContainer>
+            <SearchBarComponent />
+          </SearchBoxContainer>
+          <CarouselComponent data={sampleImages} />
+          <FlatList
+            data={todos}
+            renderItem={({ item }) => {
+              return <ToDoTileComponent todo={item} />;
+            }}
+            keyExtractor={(item) => item.id}
+          />
+        </>
+      )}
+      <Spacer size="large" />
     </SafeAreaView>
   );
 };

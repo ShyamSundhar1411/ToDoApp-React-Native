@@ -5,9 +5,8 @@ function generateRandomToDoItems(numberOfItems) {
     const todoItem = {
       id: i + 1,
       title: faker.lorem.words(),
-      task: faker.lorem.sentence(),
       completed: false,
-      created_at: faker.date.past().toISOString(),
+      createdAt: faker.date.past().toISOString(),
       isImportant: false,
     };
     todos.push(todoItem);
