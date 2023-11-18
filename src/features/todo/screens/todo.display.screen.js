@@ -5,6 +5,7 @@ import {
   Platform,
   SafeAreaView,
   FlatList,
+  TouchableOpacity,
 } from "react-native";
 import { SearchBarComponent } from "../components/SearchComponent";
 import { CarouselComponent } from "../components/CarouselComponent";
@@ -16,7 +17,7 @@ import { AuthenticationContext } from "../../../services/authentication/authenti
 import { TodoContext } from "../../../services/todo/todo.context";
 import { Loader } from "../../../components/Loader";
 import { Spacer } from "../../../components/Spacer";
-export const ToDoDisplayScreen = () => {
+export const ToDoDisplayScreen = ({ navigation }) => {
   const { user } = useContext(AuthenticationContext);
   const { todos, isLoading, error } = useContext(TodoContext);
   return (
@@ -25,17 +26,27 @@ export const ToDoDisplayScreen = () => {
         <Loader isLoading={isLoading} />
       ) : (
         <>
-          <GreetingComponent userName={user.email} />
+          <GreetingComponent userName={user ? user.email : "Test User"} />
           <SearchBoxContainer>
             <SearchBarComponent />
           </SearchBoxContainer>
-          <CarouselComponent data={sampleImages} />
+          <CarouselComponent data={sampleImages} navigation={navigation} />
           <FlatList
             data={todos}
             renderItem={({ item }) => {
-              return <ToDoTileComponent todo={item} />;
+              return (
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate("ToDoDetail", {
+                      todo: item,
+                    })
+                  }
+                >
+                  <ToDoTileComponent todo={item} />
+                </TouchableOpacity>
+              );
             }}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.createdAt}
           />
         </>
       )}
