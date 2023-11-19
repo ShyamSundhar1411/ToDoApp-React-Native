@@ -3,14 +3,6 @@ import { StyleSheet, Dimensions, Animated } from "react-native";
 
 const { width, height } = Dimensions.get("window");
 
-export const TileView = styled.View`
-  background-color: #ffffff;
-  margin: ${(props) => props.theme.space[2]};
-  padding: ${(props) => props.theme.space[3]};
-  elevation: 4;
-  border-radius: ${(props) => props.theme.space[3]};
-`;
-
 export const CarouselItemView = styled.View`
   flex: 1;
   justify-content: center;
@@ -24,9 +16,9 @@ export const CarouselView = styled.View`
 `;
 
 export const GreetingText = styled.Text`
-  font-size: ${(props) => props.theme.fontSizes.h3};
+  font-size: ${(props) => props.theme.fontSizes.h5};
   padding: ${(props) => props.theme.space[3]};
-  margin-top: ${(props) => props.theme.space[5]};
+  margin-top: ${(props) => props.theme.space[2]};
 `;
 
 export const SearchBoxContainer = styled.View`

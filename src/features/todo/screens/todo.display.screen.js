@@ -6,17 +6,18 @@ import {
   SafeAreaView,
   FlatList,
   TouchableOpacity,
+  View,
 } from "react-native";
+import { List } from "react-native-paper";
 import { SearchBarComponent } from "../components/SearchComponent";
-import { CarouselComponent } from "../components/CarouselComponent";
 import { GreetingComponent } from "../components/GreetingComponent";
-import { sampleImages } from "../../../data/sampleData";
-import { ToDoTileComponent } from "../components/ToDoTileComponent";
+import { categories } from "../../../data/categoryData";
 import { SearchBoxContainer } from "../../../components/styles/styles";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import { TodoContext } from "../../../services/todo/todo.context";
 import { Loader } from "../../../components/Loader";
 import { Spacer } from "../../../components/Spacer";
+import { CategoryComponent } from "../components/CategoryComponent";
 export const ToDoDisplayScreen = ({ navigation }) => {
   const { user } = useContext(AuthenticationContext);
   const { todos, isLoading, error } = useContext(TodoContext);
@@ -30,8 +31,18 @@ export const ToDoDisplayScreen = ({ navigation }) => {
           <SearchBoxContainer>
             <SearchBarComponent />
           </SearchBoxContainer>
-          <CarouselComponent data={sampleImages} navigation={navigation} />
-          <FlatList
+          <View style={{ justifyContent: "space-evenly", padding: 25 }}>
+            <FlatList
+              data={categories}
+              numColumns={2}
+              renderItem={({ item }) => {
+                return <CategoryComponent category={item} />;
+              }}
+              keyExtractor={(item) => item.name}
+            />
+          </View>
+
+          {/* <FlatList
             data={todos}
             renderItem={({ item }) => {
               return (
@@ -42,12 +53,16 @@ export const ToDoDisplayScreen = ({ navigation }) => {
                     })
                   }
                 >
-                  <ToDoTileComponent todo={item} />
+                  <List.Item
+                    title={item.title}
+                    left={(props) => <List.Icon {...props} icon="file" />}
+                    right={(props) => <List.Icon {...props} icon="star" />}
+                  />
                 </TouchableOpacity>
               );
             }}
             keyExtractor={(item) => item.createdAt}
-          />
+          /> */}
         </>
       )}
       <Spacer size="large" />
