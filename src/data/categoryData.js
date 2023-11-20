@@ -15,7 +15,7 @@ export const categories = [
     icon: "star",
   },
   {
-    name: "Desinging",
+    name: "Designing",
     icon: "",
     color: "rgba(144, 238, 144, 0.7)",
   },

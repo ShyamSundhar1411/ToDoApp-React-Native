@@ -11,16 +11,14 @@ const ToDoStack = createStackNavigator();
 
 export const ToDoNavigator = () => {
   return (
-    <TodoContextProvider>
-      <ToDoStack.Navigator
-        screenOptions={{
-          headerMode: "false",
-          ...TransitionPresets.ModalPresentationIOS,
-        }}
-      >
-        <ToDoStack.Screen name="Todos" component={ToDoDisplayScreen} />
-        <ToDoStack.Screen name="ToDoDetail" component={ToDoDetailScreen} />
-      </ToDoStack.Navigator>
-    </TodoContextProvider>
+    <ToDoStack.Navigator
+      screenOptions={{
+        headerMode: "false",
+        ...TransitionPresets.ModalPresentationIOS,
+      }}
+    >
+      <ToDoStack.Screen name="Todos" component={ToDoDisplayScreen} />
+      <ToDoStack.Screen name="ToDoDetail" component={ToDoDetailScreen} />
+    </ToDoStack.Navigator>
   );
 };

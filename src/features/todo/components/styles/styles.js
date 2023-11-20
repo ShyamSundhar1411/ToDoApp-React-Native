@@ -20,11 +20,23 @@ export const CategoryText = styled.Text`
   color: black;
   font-size: ${(props) => props.theme.fontSizes.body};
   font-weight: ${(props) => props.theme.fontWeights.bold};
-  padding-top: ${(props) => props.theme.space[7]};
   padding-left: ${(props) => props.theme.space[3]};
+  padding-top: ${(props) => props.theme.space[2]};
 `;
 
 export const CategoryListView = styled.View`
   justify-content: space-evenly;
   padding: 25px;
+`;
+
+export const CategoryContentContainer = styled.View`
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: ${(props) => props.theme.space[3]};
+`;
+
+export const CategoryContent = styled.Text`
+  color: "rgba(169, 169, 169, 1)";
+  padding-left: ${(props) => props.theme.space[3]};
 `;
