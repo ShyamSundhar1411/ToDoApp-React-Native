@@ -5,10 +5,10 @@ import {
   Platform,
   SafeAreaView,
   FlatList,
-  TouchableOpacity,
   View,
+  Text,
 } from "react-native";
-import { List } from "react-native-paper";
+import { List, Badge } from "react-native-paper";
 import { SearchBarComponent } from "../components/SearchComponent";
 import { GreetingComponent } from "../components/GreetingComponent";
 import { categories } from "../../../data/categoryData";
@@ -18,6 +18,7 @@ import { TodoContext } from "../../../services/todo/todo.context";
 import { Loader } from "../../../components/Loader";
 import { Spacer } from "../../../components/Spacer";
 import { CategoryComponent } from "../components/CategoryComponent";
+import { CategoryListView } from "../components/styles/styles";
 export const ToDoDisplayScreen = ({ navigation }) => {
   const { user } = useContext(AuthenticationContext);
   const { todos, isLoading, error } = useContext(TodoContext);
@@ -31,7 +32,16 @@ export const ToDoDisplayScreen = ({ navigation }) => {
           <SearchBoxContainer>
             <SearchBarComponent />
           </SearchBoxContainer>
-          <View style={{ justifyContent: "space-evenly", padding: 25 }}>
+          <View style={styles.categoryHeadingContainer}>
+            <Text style={styles.heading}>Categories</Text>
+            <Badge style={styles.badge} size={25}>
+              8
+            </Badge>
+            <View style={styles.textContainer}>
+              <Text>See more</Text>
+            </View>
+          </View>
+          <CategoryListView>
             <FlatList
               data={categories}
               numColumns={2}
@@ -40,7 +50,7 @@ export const ToDoDisplayScreen = ({ navigation }) => {
               }}
               keyExtractor={(item) => item.name}
             />
-          </View>
+          </CategoryListView>
 
           {/* <FlatList
             data={todos}
@@ -73,5 +83,27 @@ const styles = StyleSheet.create({
   androidSafeArea: {
     flex: 1,
     marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  },
+  categoryHeadingContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
+  },
+  heading: {
+    marginLeft: 16,
+    justifyContent: "flex-start",
+    fontSize: 32,
+    fontWeight: "bold",
+  },
+  badge: {
+    marginLeft: 10,
+    marginBottom: 5,
+    backgroundColor: "#ddddff",
+    color: "black",
+    fontWeight: "bold",
+  },
+  textContainer: {
+    marginLeft: "auto",
+    marginRight: 16,
   },
 });

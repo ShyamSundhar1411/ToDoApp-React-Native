@@ -13,7 +13,9 @@ export const CategoryComponent = ({ category }) => {
   return (
     <CategoryComponentView>
       <CategoryTile color={category.color}>
-        <CategoryText>{category.name}</CategoryText>
+        <CategoryText numberOfLines={1} ellipsizeMode="tail">
+          {category.name}
+        </CategoryText>
       </CategoryTile>
     </CategoryComponentView>
   );

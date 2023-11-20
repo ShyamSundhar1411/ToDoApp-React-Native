@@ -1,17 +1,22 @@
 export const categories = [
   {
     name: "Meeting",
-    color: "rgba(0,0,255,0.6)", // RGBA for blue
+    color: "#ddddff", // RGBA for blue
     icon: "group",
   },
   {
     name: "Academics",
-    color: "rgba(255,165,0,0.6)", // RGBA for orange
+    color: "rgba(255,165,0,0.7)", // RGBA for orange
     icon: "graduation-cap",
   },
   {
     name: "Extra-Curricular",
-    color: "rgba(255,215,0,0.6)", // RGBA for gold
+    color: "rgba(255,215,0,0.7)", // RGBA for gold
     icon: "star",
+  },
+  {
+    name: "Desinging",
+    icon: "",
+    color: "rgba(144, 238, 144, 0.7)",
   },
 ];
