@@ -21,7 +21,7 @@ export const CategoryComponent = ({ category }) => {
               style={styles.icon}
               name={category.icon}
               color="black"
-              size={40}
+              size={30}
             />
           )}
           <CategoryText numberOfLines={1} ellipsizeMode="tail">

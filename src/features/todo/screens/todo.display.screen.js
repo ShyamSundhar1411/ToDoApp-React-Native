@@ -7,6 +7,7 @@ import {
   FlatList,
   View,
   Text,
+  TouchableOpacity,
 } from "react-native";
 import { List, Badge } from "react-native-paper";
 import { SearchBarComponent } from "../components/SearchComponent";
@@ -19,6 +20,7 @@ import { Loader } from "../../../components/Loader";
 import { Spacer } from "../../../components/Spacer";
 import { CategoryComponent } from "../components/CategoryComponent";
 import { CategoryListView } from "../components/styles/styles";
+import { ToDoTileComponent } from "../components/ToDoTileComponent";
 export const ToDoDisplayScreen = ({ navigation }) => {
   const { user } = useContext(AuthenticationContext);
   const { todos, isLoading, error } = useContext(TodoContext);
@@ -32,7 +34,7 @@ export const ToDoDisplayScreen = ({ navigation }) => {
           <SearchBoxContainer>
             <SearchBarComponent />
           </SearchBoxContainer>
-          <View style={styles.categoryHeadingContainer}>
+          <View style={styles.headingContainer}>
             <Text style={styles.heading}>Categories</Text>
             <Badge style={styles.badge} size={25}>
               8
@@ -51,8 +53,14 @@ export const ToDoDisplayScreen = ({ navigation }) => {
               keyExtractor={(item) => item.name}
             />
           </CategoryListView>
-
-          {/* <FlatList
+          <View style={styles.headingContainer}>
+            <Text style={styles.heading}>Today's Task</Text>
+            <Badge style={styles.badge} size={25}>
+              3
+            </Badge>
+          </View>
+          <FlatList
+            scrollEnabled={true}
             data={todos}
             renderItem={({ item }) => {
               return (
@@ -63,16 +71,12 @@ export const ToDoDisplayScreen = ({ navigation }) => {
                     })
                   }
                 >
-                  <List.Item
-                    title={item.title}
-                    left={(props) => <List.Icon {...props} icon="file" />}
-                    right={(props) => <List.Icon {...props} icon="star" />}
-                  />
+                  <ToDoTileComponent todo={item} />
                 </TouchableOpacity>
               );
             }}
             keyExtractor={(item) => item.createdAt}
-          /> */}
+          />
         </>
       )}
       <Spacer size="large" />
@@ -84,7 +88,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
-  categoryHeadingContainer: {
+  headingContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "center",
@@ -92,7 +96,7 @@ const styles = StyleSheet.create({
   heading: {
     marginLeft: 16,
     justifyContent: "flex-start",
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: "bold",
   },
   badge: {

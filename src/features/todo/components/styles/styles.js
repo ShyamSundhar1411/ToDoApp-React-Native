@@ -9,7 +9,7 @@ export const CategoryComponentView = styled.View`
 
 export const CategoryTile = styled.View`
   background-color: ${(props) => props.color};
-  height: 120px;
+  height: 100px;
   width: 170px;
   border-radius: 20px;
   margin: 5px;
@@ -26,7 +26,7 @@ export const CategoryText = styled.Text`
 
 export const CategoryListView = styled.View`
   justify-content: space-evenly;
-  padding: 25px;
+  padding: 20px;
 `;
 
 export const CategoryContentContainer = styled.View`
@@ -39,4 +39,14 @@ export const CategoryContentContainer = styled.View`
 export const CategoryContent = styled.Text`
   color: "rgba(169, 169, 169, 1)";
   padding-left: ${(props) => props.theme.space[3]};
+`;
+
+export const ToDoTileView = styled.View`
+  justify-content: start;
+  padding: ${(props) => props.theme.space[3]};
+  margin: ${(props) => props.theme.space[2]};
+  border-radius: 10px;
+  border-width: 1px;
+  background-color: #ddddff;
+  height: 80px;
 `;
