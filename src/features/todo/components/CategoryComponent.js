@@ -11,10 +11,13 @@ import { LinearGradient } from "expo-linear-gradient";
 import { FontAwesome } from "@expo/vector-icons";
 
 export const CategoryComponent = ({ category }) => {
-  const gradientColorWithOpacity = `${category.color}70`;
   return (
     <CategoryComponentView>
-      <CategoryTile color={category.color}>
+      <CategoryTile
+        colors={[`${category.color}`, "transparent"]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+      >
         <CategoryContentContainer>
           {category.icon && (
             <FontAwesome

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import {
   StyleSheet,
   StatusBar,
@@ -8,8 +8,9 @@ import {
   View,
   Text,
   TouchableOpacity,
+  Animated,
 } from "react-native";
-import { List, Badge } from "react-native-paper";
+import { Badge } from "react-native-paper";
 import { SearchBarComponent } from "../components/SearchComponent";
 import { GreetingComponent } from "../components/GreetingComponent";
 import { categories } from "../../../data/categoryData";
@@ -24,6 +25,12 @@ import { ToDoTileComponent } from "../components/ToDoTileComponent";
 export const ToDoDisplayScreen = ({ navigation }) => {
   const { user } = useContext(AuthenticationContext);
   const { todos, isLoading, error } = useContext(TodoContext);
+  const scrollY = useRef(new Animated.Value(0)).current;
+
+  const handleScroll = Animated.event(
+    [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+    { useNativeDriver: false },
+  );
   return (
     <SafeAreaView style={styles.androidSafeArea}>
       {isLoading ? (
@@ -56,11 +63,12 @@ export const ToDoDisplayScreen = ({ navigation }) => {
           <View style={styles.headingContainer}>
             <Text style={styles.heading}>Today's Task</Text>
             <Badge style={styles.badge} size={25}>
-              3
+              {todos.length}
             </Badge>
           </View>
-          <FlatList
-            scrollEnabled={true}
+          <Animated.FlatList
+            onScroll={handleScroll}
+            scrollEventThrottle={16}
             data={todos}
             renderItem={({ item }) => {
               return (

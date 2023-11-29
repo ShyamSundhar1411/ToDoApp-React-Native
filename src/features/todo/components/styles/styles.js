@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
-
+import { List } from "react-native-paper";
+import { LinearGradient } from "expo-linear-gradient";
 export const CategoryComponentView = styled.View`
   justify-content: center;
   flex: 1;
@@ -7,8 +8,7 @@ export const CategoryComponentView = styled.View`
   align-self: center;
 `;
 
-export const CategoryTile = styled.View`
-  background-color: ${(props) => props.color};
+export const CategoryTile = styled(LinearGradient)`
   height: 100px;
   width: 170px;
   border-radius: 20px;
@@ -41,12 +41,11 @@ export const CategoryContent = styled.Text`
   padding-left: ${(props) => props.theme.space[3]};
 `;
 
-export const ToDoTileView = styled.View`
-  justify-content: start;
+export const ToDoTile = styled(List.Item)`
+  background-color: #ddddff;
+  border-radius: 20px;
+  border-width: 1px;
   padding: ${(props) => props.theme.space[3]};
   margin: ${(props) => props.theme.space[2]};
-  border-radius: 10px;
-  border-width: 1px;
-  background-color: #ddddff;
-  height: 80px;
+  justify-content: start;
 `;
