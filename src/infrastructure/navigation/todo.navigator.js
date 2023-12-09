@@ -5,7 +5,6 @@ import {
 } from "@react-navigation/stack";
 import { ToDoDisplayScreen } from "../../features/todo/screens/todo.display.screen";
 import { ToDoDetailScreen } from "../../features/todo/screens/todo.details.screen";
-import { TodoContextProvider } from "../../services/todo/todo.context";
 
 const ToDoStack = createStackNavigator();
 

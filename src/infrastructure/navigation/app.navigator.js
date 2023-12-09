@@ -4,10 +4,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { TodoContextProvider } from "../../services/todo/todo.context";
 import { ToDoNavigator } from "./todo.navigator";
-
+import { ScheduleNavigator } from "./schedule.navigator";
+import { SettingsNavigator } from "./settings.navigator";
 const Tab = createBottomTabNavigator();
 const TAB_ICON = {
   Home: "md-home",
+  Schedule: "md-calendar",
+  Settings: "md-person",
 };
 
 const createScreenOptions = ({ route }) => {
@@ -48,6 +51,26 @@ export const AppNavigator = () => {
           }}
           name="Home"
           component={ToDoNavigator}
+        />
+        <Tab.Screen
+          options={{
+            headerShown: false,
+            headerStyle: {
+              backgroundColor: "transparent",
+            },
+          }}
+          name="Schedule"
+          component={ScheduleNavigator}
+        />
+        <Tab.Screen
+          options={{
+            headerShown: false,
+            headerStyle: {
+              backgroundColor: "transparent",
+            },
+          }}
+          name="Settings"
+          component={SettingsNavigator}
         />
         {/* <Tab.Screen
             options={{
