@@ -27,7 +27,7 @@ const createScreenOptions = ({ route }) => {
         left: 20,
         right: 20,
         elevation: 0,
-        backgroundColor: "white",
+        backgroundColor: "#ddddff",
         borderRadius: 15,
         height: 90,
         ...styles.shadow,
